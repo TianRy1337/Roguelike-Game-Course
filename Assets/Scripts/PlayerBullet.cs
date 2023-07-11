@@ -9,32 +9,27 @@ public class PlayerBullet : MonoBehaviour
     public GameObject impactEffect;
     public int damageToGive = 50;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        theRB.velocity = transform.right*speed;
+        theRB.velocity = transform.right * speed;
     }
 
-  
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Instantiate(impactEffect,transform.position,transform.rotation);
+        Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(gameObject);
         AudioManger.instance.PlaySFX(4);
-        if(other.tag == "Enemy")
+        if (other.tag == "Enemy")
         {
-        other.GetComponent<EnemyController>().DamageEnemy(damageToGive);
+            other.GetComponent<EnemyController>().DamageEnemy(damageToGive);
         }
-        if(other.tag=="Boss")
+        if (other.tag == "Boss")
         {
             BossController.instance.TakeDemage(damageToGive);
-            Instantiate(BossController.instance.hitEffect,transform.position,transform.rotation);
+            Instantiate(BossController.instance.hitEffect, transform.position, transform.rotation);
         }
     }
 

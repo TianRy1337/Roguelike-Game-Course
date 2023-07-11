@@ -195,7 +195,7 @@ TextureImporter:
       213: -3169272403046454608
     second: Dungeon 1 Tiles_63
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -212,9 +212,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -224,8 +227,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -246,10 +249,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -261,6 +269,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -273,6 +282,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 128
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1632,9 +1655,73 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Dungeon 1 Tiles_0: 6355845439008187583
+      Dungeon 1 Tiles_1: 9135993811521583247
+      Dungeon 1 Tiles_10: 8483603846531404376
+      Dungeon 1 Tiles_11: -3231188118696207447
+      Dungeon 1 Tiles_12: -4709605994077762339
+      Dungeon 1 Tiles_13: -8444396249528700057
+      Dungeon 1 Tiles_14: 7138934824562499343
+      Dungeon 1 Tiles_15: -2862975457670524449
+      Dungeon 1 Tiles_16: 4974407021551009869
+      Dungeon 1 Tiles_17: -391901052462742463
+      Dungeon 1 Tiles_18: -1609318697812274242
+      Dungeon 1 Tiles_19: -894946558681861119
+      Dungeon 1 Tiles_2: 5703720863153573711
+      Dungeon 1 Tiles_20: -8114057309742815817
+      Dungeon 1 Tiles_21: 3019362334984307841
+      Dungeon 1 Tiles_22: -4167300423170552858
+      Dungeon 1 Tiles_23: -5991799002385968701
+      Dungeon 1 Tiles_24: 5033120742405874967
+      Dungeon 1 Tiles_25: 2274814106287167344
+      Dungeon 1 Tiles_26: -2152038762762613454
+      Dungeon 1 Tiles_27: -4468811917990629281
+      Dungeon 1 Tiles_28: 5760314922986070160
+      Dungeon 1 Tiles_29: 8568402745679609450
+      Dungeon 1 Tiles_3: -8961167715618194868
+      Dungeon 1 Tiles_30: 8425326801099548344
+      Dungeon 1 Tiles_31: 504808848334126187
+      Dungeon 1 Tiles_32: 2504669088661976285
+      Dungeon 1 Tiles_33: 6683772415531683147
+      Dungeon 1 Tiles_34: -5992341157686651931
+      Dungeon 1 Tiles_35: 1888708823361229399
+      Dungeon 1 Tiles_36: 2133260704982549893
+      Dungeon 1 Tiles_37: 7791414229840717418
+      Dungeon 1 Tiles_38: 5144861967381952704
+      Dungeon 1 Tiles_39: 7450076215302887927
+      Dungeon 1 Tiles_4: 3862351321836311112
+      Dungeon 1 Tiles_40: -2318008236957135558
+      Dungeon 1 Tiles_41: -6671825588198093213
+      Dungeon 1 Tiles_42: 8638123834956029925
+      Dungeon 1 Tiles_43: 1940943993547349979
+      Dungeon 1 Tiles_44: -4258955544932329554
+      Dungeon 1 Tiles_45: -5457669247510862656
+      Dungeon 1 Tiles_46: 8141749632530274913
+      Dungeon 1 Tiles_47: -8254105804378001666
+      Dungeon 1 Tiles_48: 350811231755103086
+      Dungeon 1 Tiles_49: 1646645803733762401
+      Dungeon 1 Tiles_5: 2811704598577035907
+      Dungeon 1 Tiles_50: 6029370444553685998
+      Dungeon 1 Tiles_51: 3384330678777601236
+      Dungeon 1 Tiles_52: 4850107965212417972
+      Dungeon 1 Tiles_53: -722066687530911221
+      Dungeon 1 Tiles_54: -3669385620740498905
+      Dungeon 1 Tiles_55: 3612981329249433188
+      Dungeon 1 Tiles_56: 6951988050794655901
+      Dungeon 1 Tiles_57: 672676353397964033
+      Dungeon 1 Tiles_58: -5344974492675717665
+      Dungeon 1 Tiles_59: -3097673563052875246
+      Dungeon 1 Tiles_6: 9024029833318688834
+      Dungeon 1 Tiles_60: -7000107526249804728
+      Dungeon 1 Tiles_61: 3164015507980074653
+      Dungeon 1 Tiles_62: 2240143298225938675
+      Dungeon 1 Tiles_63: -3169272403046454608
+      Dungeon 1 Tiles_7: -1264372205609011523
+      Dungeon 1 Tiles_8: 6886859321896833950
+      Dungeon 1 Tiles_9: -1618729448920148427
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
