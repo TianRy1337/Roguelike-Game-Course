@@ -6,7 +6,7 @@ public class CharacterTracker : MonoBehaviour
 {
     public static CharacterTracker instance;
 
-    public int currentHealth,maxHealth,currentCoins;
+    public int currentHealth, maxHealth, currentCoins;
 
     void Awake()
     {
@@ -14,10 +14,10 @@ public class CharacterTracker : MonoBehaviour
     }
     void Start()
     {
-        
+
     }
     void Update()
     {
-        
+
     }
 }

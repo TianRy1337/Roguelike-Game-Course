@@ -22,16 +22,16 @@ public class BossBullet : MonoBehaviour
     void Update()
     {
         transform.position += direction * speed * Time.deltaTime;
-        if(!BossController.instance.gameObject.activeInHierarchy)
+        if (!BossController.instance.gameObject.activeInHierarchy)
         {
             Destroy(gameObject);
         }
     }
 
-    
-   private void OnTriggerEnter2D(Collider2D other)
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             PlayerHealthController.instance.DamagePlayer(bulletDamage);
         }

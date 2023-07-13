@@ -8,25 +8,19 @@ public class CoinPickup : MonoBehaviour
 
     public float waitToBeCollected = .5f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if(waitToBeCollected >0)
+        if (waitToBeCollected > 0)
         {
-            waitToBeCollected-=Time.deltaTime;
+            waitToBeCollected -= Time.deltaTime;
         }
     }
 
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag =="Player" && waitToBeCollected<=0)
+        if (other.tag == "Player" && waitToBeCollected <= 0)
         {
             LevelManager.instance.GetCoins(coinValue);
             Destroy(gameObject);

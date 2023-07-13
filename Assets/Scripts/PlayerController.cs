@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //theCam = Camera.main;
-       
+
         activeMoveSpeed = moveSpeed;
 
         UIController.instance.currentGun.sprite = availableGuns[currentGun].gunUI;
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (canMove && !LevelManager.instance.isPaused)
         {
             moveInput.x = Input.GetAxisRaw("Horizontal");
@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
             theRB.velocity = Vector2.zero;
             Anim.SetBool("isMoving", false);
         }
-        
+
     }
 
     public void SwitchGun()

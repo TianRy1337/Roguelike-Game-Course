@@ -13,22 +13,18 @@ public class CheatReward : MonoBehaviour
         instance = this;
         code = GetComponent<CheatCode>();
     }
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
+
     void Update()
     {
-        if(code.success)
-        {   
-            for(int i =0;i<cheatGuns.Length;i++)
+        if (code.success)
+        {
+            for (int i = 0; i < cheatGuns.Length; i++)
             {
-                Instantiate(cheatGuns[i],cheatGunsSpawnPoint[i].position,cheatGunsSpawnPoint[i].rotation);
+                Instantiate(cheatGuns[i], cheatGunsSpawnPoint[i].position, cheatGunsSpawnPoint[i].rotation);
             }
             code.success = false;
             instance.enabled = !instance.enabled;
             //code.enabled = !code.enabled;
-            
-            
         }
     }
 }

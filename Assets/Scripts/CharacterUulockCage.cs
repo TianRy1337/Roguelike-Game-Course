@@ -15,7 +15,7 @@ public class CharacterUulockCage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerToUnlock = charSelects[Random.Range(0,charSelects.Length)];
+        playerToUnlock = charSelects[Random.Range(0, charSelects.Length)];
 
         cageSR.sprite = playerToUnlock.playerToSpawn.bodySR.sprite;
     }
@@ -23,13 +23,13 @@ public class CharacterUulockCage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(canUnlock)
+        if (canUnlock)
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                PlayerPrefs.SetInt(playerToUnlock.playerToSpawn.name,1);
+                PlayerPrefs.SetInt(playerToUnlock.playerToSpawn.name, 1);
 
-                Instantiate(playerToUnlock,transform.position,transform.rotation);
+                Instantiate(playerToUnlock, transform.position, transform.rotation);
 
                 gameObject.SetActive(false);
             }

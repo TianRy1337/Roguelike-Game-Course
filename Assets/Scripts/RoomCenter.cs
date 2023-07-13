@@ -12,7 +12,7 @@ public class RoomCenter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(openWhenEnemiesCleared)
+        if (openWhenEnemiesCleared)
         {
             theRoom.closeWhenEntered = true;
         }
@@ -21,18 +21,18 @@ public class RoomCenter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(enmeies.Count > 0 && theRoom.roomActive && openWhenEnemiesCleared)
+        if (enmeies.Count > 0 && theRoom.roomActive && openWhenEnemiesCleared)
         {
-            for(int i =0;i<enmeies.Count;i++)
+            for (int i = 0; i < enmeies.Count; i++)
             {
-                if(enmeies[i]==null)
+                if (enmeies[i] == null)
                 {
                     enmeies.RemoveAt(i);
                     i--;//避免錯砍
                 }
             }
 
-            if(enmeies.Count ==0)
+            if (enmeies.Count == 0)
             {
                 theRoom.OpenDoor();
             }

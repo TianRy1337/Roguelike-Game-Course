@@ -15,8 +15,8 @@ public class EnemyController : MonoBehaviour
     public float runawayRange;
     [Header("遊蕩")]
     public bool shouldWander;
-    public float wanderLength,pauseLength;
-    private float wanderCounter,pauseCounter;
+    public float wanderLength, pauseLength;
+    private float wanderCounter, pauseCounter;
     private Vector3 wanderDirection;
     [Header("巡邏")]
     public bool shouldPatrol;
@@ -34,7 +34,7 @@ public class EnemyController : MonoBehaviour
     public Animator Anim;
     public int health = 150;
     public GameObject[] deathsplatters;
-    public GameObject  hitEffect;
+    public GameObject hitEffect;
 
     public bool shouldDropItem;
     public GameObject[] itemToDrop;
@@ -44,70 +44,71 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(shouldWander)
+        if (shouldWander)
         {
-            pauseCounter = Random.Range(pauseLength*.75f,pauseLength*1.25f);
+            pauseCounter = Random.Range(pauseLength * .75f, pauseLength * 1.25f);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(theBody.isVisible && PlayerController.instance.gameObject.activeInHierarchy)
+        if (theBody.isVisible && PlayerController.instance.gameObject.activeInHierarchy)
         {
             moveDirection = Vector3.zero;
 
-            if(Vector3.Distance(transform.position,PlayerController.instance.transform.position)< rangeToChasePlayer && shouldChasePlayer)
+            if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) < rangeToChasePlayer && shouldChasePlayer)
             {
                 moveDirection = PlayerController.instance.transform.position - transform.position;
-            } else
+            }
+            else
             {
-                if(shouldWander)
+                if (shouldWander)
                 {
-                    if(wanderCounter > 0)
+                    if (wanderCounter > 0)
                     {
-                        wanderCounter-=Time.deltaTime;
+                        wanderCounter -= Time.deltaTime;
 
                         //move the enemy
                         moveDirection = wanderDirection;
-                        if(wanderCounter <=0)
+                        if (wanderCounter <= 0)
                         {
-                            pauseCounter = Random.Range(pauseLength*.75f,pauseLength*1.25f);
+                            pauseCounter = Random.Range(pauseLength * .75f, pauseLength * 1.25f);
                         }
                     }
-                    if(pauseCounter > 0)
+                    if (pauseCounter > 0)
                     {
                         pauseCounter -= Time.deltaTime;
 
-                        if(pauseCounter <=0)
+                        if (pauseCounter <= 0)
                         {
-                            wanderCounter = Random.Range(wanderLength*.75f,wanderLength*1.25f);
+                            wanderCounter = Random.Range(wanderLength * .75f, wanderLength * 1.25f);
 
-                            wanderDirection = new Vector3(Random.Range(-1f,1f),Random.Range(-1f,1f),0f);
+                            wanderDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
                         }
                     }
                 }
-                
-                if(shouldPatrol)
+
+                if (shouldPatrol)
                 {
                     moveDirection = patrolPoints[currentPatrolPoint].position - transform.position;
 
-                    if(Vector3.Distance(transform.position ,patrolPoints[currentPatrolPoint].position)< .2f)
+                    if (Vector3.Distance(transform.position, patrolPoints[currentPatrolPoint].position) < .2f)
                     {
                         currentPatrolPoint++;
 
-                        if(currentPatrolPoint >=patrolPoints.Length)
+                        if (currentPatrolPoint >= patrolPoints.Length)
                         {
                             currentPatrolPoint = 0;
                         }
                     }
                 }
             }
-            if(shouldRunAway && Vector3.Distance(transform.position,PlayerController.instance.transform.position) < runawayRange)
+            if (shouldRunAway && Vector3.Distance(transform.position, PlayerController.instance.transform.position) < runawayRange)
             {
                 moveDirection = transform.position - PlayerController.instance.transform.position;
             }
-            
+
             /*else
             {
                 moveDirection = Vector3.zero;
@@ -119,27 +120,29 @@ public class EnemyController : MonoBehaviour
 
 
 
-            if(shouldShoot && Vector3.Distance(transform.position,PlayerController.instance.transform.position)<shouldShootRange)
+            if (shouldShoot && Vector3.Distance(transform.position, PlayerController.instance.transform.position) < shouldShootRange)
             {
                 fireCounter -= Time.deltaTime;
-                if(fireCounter<=0)
+                if (fireCounter <= 0)
                 {
                     fireCounter = fireRate;
-                    Instantiate(bullet,firePoint.position,firePoint.rotation);
+                    Instantiate(bullet, firePoint.position, firePoint.rotation);
                     AudioManger.instance.PlaySFX(13);
                 }
             }
-        }else
+        }
+        else
         {
             theRB.velocity = Vector2.zero;
         }
-        
-        if(moveDirection != Vector3.zero)
+
+        if (moveDirection != Vector3.zero)
         {
-            Anim.SetBool("isMoving",true);            
-        }else
+            Anim.SetBool("isMoving", true);
+        }
+        else
         {
-            Anim.SetBool("isMoving",false);
+            Anim.SetBool("isMoving", false);
         }
 
     }
@@ -148,24 +151,24 @@ public class EnemyController : MonoBehaviour
     {
         health -= damage;
         AudioManger.instance.PlaySFX(2);
-        Instantiate(hitEffect,transform.position,transform.rotation);
-        if(health <= 0)
+        Instantiate(hitEffect, transform.position, transform.rotation);
+        if (health <= 0)
         {
             Destroy(gameObject);
             AudioManger.instance.PlaySFX(1);
-            int selectedSplatter = Random.Range(0,deathsplatters.Length);
-            int rotation = Random.Range(0,4);
-            Instantiate(deathsplatters[selectedSplatter],transform.position,Quaternion.Euler(0f,0f,rotation*90f));
+            int selectedSplatter = Random.Range(0, deathsplatters.Length);
+            int rotation = Random.Range(0, 4);
+            Instantiate(deathsplatters[selectedSplatter], transform.position, Quaternion.Euler(0f, 0f, rotation * 90f));
 
-            if(shouldDropItem)
+            if (shouldDropItem)
             {
-                float dropChance = Random.Range(0f,100f);
-                if(dropChance < itemDropPercent)
+                float dropChance = Random.Range(0f, 100f);
+                if (dropChance < itemDropPercent)
                 {
-                    int randomItem = Random.Range(0,itemToDrop.Length);
-                    Instantiate(itemToDrop[randomItem],transform.position,transform.rotation);
+                    int randomItem = Random.Range(0, itemToDrop.Length);
+                    Instantiate(itemToDrop[randomItem], transform.position, transform.rotation);
                 }
-                }
+            }
         }
     }
 }

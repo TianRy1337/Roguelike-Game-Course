@@ -52,7 +52,7 @@ public class ShopItem : MonoBehaviour
                         PlayerHealthController.instance.IncreaseMaxHealth(healthUpgradeAmount);
                     }
 
-                    if(isWeapon)
+                    if (isWeapon)
                     {
                         Gun gunClone = Instantiate(theGun);
                         gunClone.transform.parent = PlayerController.instance.gunArm;

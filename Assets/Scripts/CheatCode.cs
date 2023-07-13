@@ -5,7 +5,7 @@ using UnityEngine;
 public class CheatCode : MonoBehaviour
 {
     private const float WaitTime = 0.5f;
-    
+
 
     private KeyCode[] keys = new KeyCode[]
     {
@@ -21,9 +21,9 @@ public class CheatCode : MonoBehaviour
         KeyCode.A
     };
 
-    public bool success;     
-    
-    IEnumerator Start ()
+    public bool success;
+
+    IEnumerator Start()
     {
         float timer = 0f;
         int index = 0;
@@ -51,7 +51,7 @@ public class CheatCode : MonoBehaviour
                 timer = 0;
                 index = 0;
             }
-            
+
             if (timer > 0)
             {
                 timer -= Time.deltaTime;
@@ -65,5 +65,5 @@ public class CheatCode : MonoBehaviour
 
             yield return null;
         }
-	}
+    }
 }

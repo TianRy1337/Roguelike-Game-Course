@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class VictoryScreen : MonoBehaviour
 {
-    public float waitForAnyKey =2f;
+    public float waitForAnyKey = 2f;
     public GameObject anyKeyText;
     public string mainMenuScene;
     // Start is called before the first frame update
     void Start()
-    { 
+    {
         Time.timeScale = 1f;
 
         Destroy(PlayerController.instance.gameObject);
@@ -19,17 +19,18 @@ public class VictoryScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(waitForAnyKey>0)
+        if (waitForAnyKey > 0)
         {
             waitForAnyKey -= Time.deltaTime;
-            if(waitForAnyKey <= 0)
+            if (waitForAnyKey <= 0)
             {
                 anyKeyText.SetActive(true);
             }
 
-        }else
+        }
+        else
         {
-            if(Input.anyKeyDown)
+            if (Input.anyKeyDown)
             {
                 SceneManager.LoadScene(mainMenuScene);
             }

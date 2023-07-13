@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioManger : MonoBehaviour
 {
     public static AudioManger instance;
-    public AudioSource level1Music , gameOverMusic, winMusic;
+    public AudioSource level1Music, gameOverMusic, winMusic;
     public AudioSource[] Sfx;
 
     void Awake()
@@ -15,13 +15,13 @@ public class AudioManger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void PlayGameOver()
     {

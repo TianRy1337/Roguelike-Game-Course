@@ -8,8 +8,8 @@ public class CameraController : MonoBehaviour
 
     public float moveSpeed;
     public Transform target;
-    
-    public Camera mainCamera,bigMapCamera;
+
+    public Camera mainCamera, bigMapCamera;
 
     private bool bigMapActive;
 
@@ -17,38 +17,39 @@ public class CameraController : MonoBehaviour
 
     void Awake()
     {
-        instance= this;
+        instance = this;
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        if(isBossRoom)
+        if (isBossRoom)
         {
-            target  = PlayerController.instance.transform;
+            target = PlayerController.instance.transform;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(target!=null)
+        if (target != null)
         {
-        transform.position = Vector3.MoveTowards(transform.position,new Vector3(target.position.x,target.position.y,transform.position.z),moveSpeed*Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x, target.position.y, transform.position.z), moveSpeed * Time.deltaTime);
         }
 
-        if(Input.GetKeyDown(KeyCode.M)&&!isBossRoom)
+        if (Input.GetKeyDown(KeyCode.M) && !isBossRoom)
         {
-            if(!bigMapActive)
+            if (!bigMapActive)
             {
                 ActiveBigMap();
-            }else
+            }
+            else
             {
                 DeactiveBigMap();
             }
         }
     }
-    
+
     public void ChangeTarget(Transform newTarget)
     {
         target = newTarget;
@@ -56,7 +57,7 @@ public class CameraController : MonoBehaviour
 
     public void ActiveBigMap()
     {
-        if(!LevelManager.instance.isPaused)
+        if (!LevelManager.instance.isPaused)
         {
 
             bigMapActive = true;
@@ -72,7 +73,7 @@ public class CameraController : MonoBehaviour
     }
     public void DeactiveBigMap()
     {
-        if(!LevelManager.instance.isPaused)
+        if (!LevelManager.instance.isPaused)
         {
             bigMapActive = false;
             bigMapCamera.enabled = false;

@@ -24,10 +24,10 @@ public class EnmeyBullet : MonoBehaviour
         transform.position += direction * speed * Time.deltaTime;
     }
 
-    
-   private void OnTriggerEnter2D(Collider2D other)
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             PlayerHealthController.instance.DamagePlayer(bulletDamage);
         }

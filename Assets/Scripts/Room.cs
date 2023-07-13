@@ -8,7 +8,7 @@ public class Room : MonoBehaviour
 
     public GameObject[] doors;
 
-   //public List<GameObject> enmeies = new List<GameObject>();
+    //public List<GameObject> enmeies = new List<GameObject>();
     [HideInInspector]
     public bool roomActive;
 
@@ -17,69 +17,69 @@ public class Room : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       /* if(enmeies.Count > 0 && roomActive && openWhenEnemiesCleared)
-        {
-            for(int i =0;i<enmeies.Count;i++)
-            {
-                if(enmeies[i]==null)
-                {
-                    enmeies.RemoveAt(i);
-                    i--;//避免錯砍
-                }
-            }
+        /* if(enmeies.Count > 0 && roomActive && openWhenEnemiesCleared)
+         {
+             for(int i =0;i<enmeies.Count;i++)
+             {
+                 if(enmeies[i]==null)
+                 {
+                     enmeies.RemoveAt(i);
+                     i--;//避免錯砍
+                 }
+             }
 
-            if(enmeies.Count ==0)
-            {
-                foreach(GameObject door in doors)
-                {
-                    door.SetActive(false);
+             if(enmeies.Count ==0)
+             {
+                 foreach(GameObject door in doors)
+                 {
+                     door.SetActive(false);
 
-                    closeWhenEntered = false;
-                }
-            }
-        }*/
+                     closeWhenEntered = false;
+                 }
+             }
+         }*/
     }
     public void OpenDoor()
     {
-        foreach(GameObject door in doors)
-            {
-                door.SetActive(false);
+        foreach (GameObject door in doors)
+        {
+            door.SetActive(false);
 
-                closeWhenEntered = false;
-            }
+            closeWhenEntered = false;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag =="Player")
+        if (other.tag == "Player")
         {
             CameraController.instance.ChangeTarget(transform);
 
-            if(closeWhenEntered)
+            if (closeWhenEntered)
             {
-                foreach(GameObject door in doors)
+                foreach (GameObject door in doors)
                 {
                     door.SetActive(true);
                 }
             }
-            roomActive =true;
+            roomActive = true;
 
             mapHider.SetActive(false);
         }
     }
 
-    
+
     void OnTriggerExit2D(Collider2D other)
     {
-        if(other.tag =="Player")
+        if (other.tag == "Player")
         {
-            roomActive= false;
+            roomActive = false;
         }
     }
 }

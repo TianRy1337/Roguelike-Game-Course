@@ -16,11 +16,11 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void StartGame()
     {
-        SceneManager.LoadScene(levelToLoad);      
+        SceneManager.LoadScene(levelToLoad);
     }
     public void ExitGame()
     {
@@ -34,9 +34,9 @@ public class MainMenu : MonoBehaviour
     public void ConfirmDelete()
     {
         deletePanel.SetActive(false);
-        foreach(CharacterSelector theChar in charactersToDelete)
+        foreach (CharacterSelector theChar in charactersToDelete)
         {
-            PlayerPrefs.SetInt(theChar.playerToSpawn.name,0);
+            PlayerPrefs.SetInt(theChar.playerToSpawn.name, 0);
         }
 
     }

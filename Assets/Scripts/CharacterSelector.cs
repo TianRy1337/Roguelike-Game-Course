@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CharacterSelector : MonoBehaviour
 {
-    private  bool canSelect;
+    private bool canSelect;
 
     public GameObject message;
-    
+
     public PlayerController playerToSpawn;
 
     public bool shouldUnlock;
@@ -15,19 +15,21 @@ public class CharacterSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(shouldUnlock)
+        if (shouldUnlock)
         {
-            
-            if(PlayerPrefs.HasKey(playerToSpawn.name))
+
+            if (PlayerPrefs.HasKey(playerToSpawn.name))
             {
-                if(PlayerPrefs.GetInt(playerToSpawn.name)==1)
+                if (PlayerPrefs.GetInt(playerToSpawn.name) == 1)
                 {
                     gameObject.SetActive(true);
-                }else
+                }
+                else
                 {
                     gameObject.SetActive(false);
                 }
-            }else
+            }
+            else
             {
                 gameObject.SetActive(false);
             }
@@ -38,15 +40,15 @@ public class CharacterSelector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(canSelect)
+        if (canSelect)
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 Vector3 playerPos = PlayerController.instance.transform.position;
 
                 Destroy(PlayerController.instance.gameObject);
 
-                PlayerController newPlayer = Instantiate(playerToSpawn,playerPos,playerToSpawn.transform.rotation);
+                PlayerController newPlayer = Instantiate(playerToSpawn, playerPos, playerToSpawn.transform.rotation);
                 PlayerController.instance = newPlayer;
 
                 gameObject.SetActive(false);
@@ -54,28 +56,28 @@ public class CharacterSelector : MonoBehaviour
 
                 CharacterSelectManager.instance.activePlayer = newPlayer;
                 CharacterSelectManager.instance.activeCharSelect.gameObject.SetActive(true);
-                CharacterSelectManager.instance.activeCharSelect =this;
-                
+                CharacterSelectManager.instance.activeCharSelect = this;
+
             }
         }
     }
 
-    
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             canSelect = true;
             message.SetActive(true);
-        }    
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             canSelect = false;
             message.SetActive(false);
-        }    
+        }
     }
 }

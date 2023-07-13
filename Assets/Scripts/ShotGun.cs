@@ -5,8 +5,8 @@ using UnityEngine;
 public class ShotGun : MonoBehaviour
 {
     public GameObject bulletToFire;
-    public Transform firePoint,firePoint2;
-    
+    public Transform firePoint, firePoint2;
+
 
     public float timeBetweemShots;
     private float shotCounter;

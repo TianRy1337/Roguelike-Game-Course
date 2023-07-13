@@ -15,10 +15,10 @@ public class UIController : MonoBehaviour
 
     public Image fadeScreen;
     public float fadeSpeed;
-    private bool fadeToBlack,fadeOutBlack;
-    public string newGameScene,mainMenuScene;
+    private bool fadeToBlack, fadeOutBlack;
+    public string newGameScene, mainMenuScene;
 
-    public GameObject pauseMenu,mapDisplay,bigMapText;
+    public GameObject pauseMenu, mapDisplay, bigMapText;
 
     public Image currentGun;
     public Text gunText;
@@ -27,28 +27,28 @@ public class UIController : MonoBehaviour
     public Slider bossHealthBar;
 
     void Awake()
-    {   
-      instance = this;
+    {
+        instance = this;
     }
     // Start is called before the first frame update
     void Start()
     {
-      //這裡新增
-      /*////////////////////////////////*/
-      healthSlider.maxValue = CharacterTracker.instance.maxHealth;
-      healthSlider.value = CharacterTracker.instance.currentHealth;
-      healText.text = PlayerHealthController.instance.currentHealth.ToString()+" / " + PlayerHealthController.instance.maxHealth.ToString();
-      coinText.text = CharacterTracker.instance.currentCoins.ToString();
-      /*////////////////////////////////*/
+        //這裡新增
+        /*////////////////////////////////*/
+        healthSlider.maxValue = CharacterTracker.instance.maxHealth;
+        healthSlider.value = CharacterTracker.instance.currentHealth;
+        healText.text = PlayerHealthController.instance.currentHealth.ToString() + " / " + PlayerHealthController.instance.maxHealth.ToString();
+        coinText.text = CharacterTracker.instance.currentCoins.ToString();
+        /*////////////////////////////////*/
 
-      PlayerHealthController.instance.maxHealth = CharacterTracker.instance.maxHealth;
-      PlayerHealthController.instance.currentHealth = CharacterTracker.instance.currentHealth;
-      //coinText = CharacterTracker.instance.currentCoins;
+        PlayerHealthController.instance.maxHealth = CharacterTracker.instance.maxHealth;
+        PlayerHealthController.instance.currentHealth = CharacterTracker.instance.currentHealth;
+        //coinText = CharacterTracker.instance.currentCoins;
 
-      fadeOutBlack = true;
-      fadeToBlack = false;
-      currentGun.sprite = PlayerController.instance.availableGuns[PlayerController.instance.currentGun].gunUI;
-      gunText.text = PlayerController.instance.availableGuns[PlayerController.instance.currentGun].weaponName;
+        fadeOutBlack = true;
+        fadeToBlack = false;
+        currentGun.sprite = PlayerController.instance.availableGuns[PlayerController.instance.currentGun].gunUI;
+        gunText.text = PlayerController.instance.availableGuns[PlayerController.instance.currentGun].weaponName;
     }
 
     // Update is called once per frame
@@ -56,44 +56,44 @@ public class UIController : MonoBehaviour
     {
         if (fadeOutBlack)
         {
-          fadeScreen.color = new Color (fadeScreen.color.r,fadeScreen.color.g,fadeScreen.color.b,Mathf.MoveTowards(fadeScreen.color.a, 0f,fadeSpeed*Time.deltaTime));
-          if(fadeScreen.color.a == 0f)
-          {
-            fadeOutBlack = false;
-          }
+            fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, Mathf.MoveTowards(fadeScreen.color.a, 0f, fadeSpeed * Time.deltaTime));
+            if (fadeScreen.color.a == 0f)
+            {
+                fadeOutBlack = false;
+            }
         }
 
-        if(fadeToBlack)
+        if (fadeToBlack)
         {
-          fadeScreen.color = new Color (fadeScreen.color.r,fadeScreen.color.g,fadeScreen.color.b,Mathf.MoveTowards(fadeScreen.color.a, 1f,fadeSpeed*Time.deltaTime));
-          if(fadeScreen.color.a == 1f)
-          {
-            fadeToBlack = false;
-          }
+            fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, Mathf.MoveTowards(fadeScreen.color.a, 1f, fadeSpeed * Time.deltaTime));
+            if (fadeScreen.color.a == 1f)
+            {
+                fadeToBlack = false;
+            }
         }
     }
-  public void startFadeToBlack()
-  {
-    fadeToBlack = true;
-    fadeOutBlack = false;
-  }
-  public void NewGame()
-  {
-    Time.timeScale = 1f;
-    SceneManager.LoadScene(newGameScene);
-    Destroy(PlayerController.instance.gameObject);
-  }
-  public void ReturnMainMenu()
-  {
-    Time.timeScale = 1f;
-    SceneManager.LoadScene(mainMenuScene);
-    Destroy(PlayerController.instance.gameObject);
-  }
+    public void startFadeToBlack()
+    {
+        fadeToBlack = true;
+        fadeOutBlack = false;
+    }
+    public void NewGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(newGameScene);
+        Destroy(PlayerController.instance.gameObject);
+    }
+    public void ReturnMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(mainMenuScene);
+        Destroy(PlayerController.instance.gameObject);
+    }
 
-  public void Resume()
-  {
-    LevelManager.instance.Pause_Unpasue();
-  }
+    public void Resume()
+    {
+        LevelManager.instance.Pause_Unpasue();
+    }
 }
 
 
